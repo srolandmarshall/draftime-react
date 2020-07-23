@@ -1,16 +1,29 @@
 {
-  "name": "draftime",
-  "private": true,
-  "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
-    "react_ujs": "^2.6.1",
-    "turbolinks": "^5.2.0"
-  },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
-  }
+	"name": "draftime",
+	"private": true,
+	"dependencies": {
+		"@babel/preset-react": "^7.10.4",
+		"@babel/runtime": "^7.10.5",
+		"@rails/actioncable": "^6.0.0",
+		"@rails/activestorage": "^6.0.0",
+		"@rails/ujs": "^6.0.0",
+		"@rails/webpacker": "4.2.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react_ujs": "^2.6.1",
+		"turbolinks": "^5.2.0"
+	},
+	"version": "0.1.0",
+	"devDependencies": {
+		"webpack-dev-server": "^3.11.0"
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-env",
+			"@babel/preset-react"
+		],
+		"plugins": [
+			"@babel/plugin-proposal-class-properties"
+		]
+	}
 }
