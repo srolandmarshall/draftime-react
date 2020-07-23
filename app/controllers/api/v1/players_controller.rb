@@ -6,8 +6,8 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   def create
-    article = Player.create(article_params)
-    render json: article
+    player = Player.create(player_params)
+    render json: player
   end
 
   def destroy
@@ -16,7 +16,7 @@ class Api::V1::PlayersController < ApplicationController
 
   def update
     player = Player.find(params[:id])
-    player.update_attributes(article_params)
+    player.update_attributes(player_params)
     render json: player
   end
 

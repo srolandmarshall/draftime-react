@@ -57,4 +57,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'react-rails', '~> 2.6'
 
-gem "fantasy_football_nerd", "~> 1.3"
+gem 'fantasy_football_nerd', '~> 1.3'
