@@ -1,0 +1,32 @@
+<%= form_with(model: api_v1_team, local: true) do |form| %>
+  <% if api_v1_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(api_v1_team.errors.count, "error") %> prohibited this api_v1_team from being saved:</h2>
+
+      <ul>
+        <% api_v1_team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :short_name %>
+    <%= form.text_field :short_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

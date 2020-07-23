@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class DraftTest < ActiveSupport::TestCase
+class LeagueTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

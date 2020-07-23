@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: %i[show edit update destroy]
 
   # GET /players
   # GET /players.json
@@ -10,6 +12,11 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    @player = set_player
+    respond_to do |format|
+      format.html
+      format.json { render json: @player }
+    end
   end
 
   # GET /players/new
@@ -18,8 +25,7 @@ class PlayersController < ApplicationController
   end
 
   # GET /players/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /players
   # POST /players.json
@@ -28,9 +34,11 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
+        puts "Created #{player.display_name}"
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render :show, status: :created, location: @player }
       else
+        puts 'Creation failed'
         format.html { render :new }
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
@@ -62,13 +70,14 @@ class PlayersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def player_params
-      params.require(:player).permit(:name, :position, :league)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_player
+    @player = Player.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def player_params
+    params.require(:player).permit(:name, :position, :fname, :lname, :display_name, :jersey, :league_id, :team_id)
+  end
 end

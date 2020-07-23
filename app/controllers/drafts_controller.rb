@@ -1,30 +1,30 @@
-class Api::V1::DraftsController < ApplicationController
-  before_action :set_api_v1_draft, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
+
+class DraftsController < ApplicationController
+  before_action :set_api_v1_draft, only: %i[show edit update destroy]
 
   # GET /api/v1/drafts
   # GET /api/v1/drafts.json
   def index
-    @api_v1_drafts = Api::V1::Draft.all
+    @api_v1_drafts = Draft.all
   end
 
   # GET /api/v1/drafts/1
   # GET /api/v1/drafts/1.json
-  def show
-  end
+  def show; end
 
   # GET /api/v1/drafts/new
   def new
-    @api_v1_draft = Api::V1::Draft.new
+    @api_v1_draft = Draft.new
   end
 
   # GET /api/v1/drafts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /api/v1/drafts
   # POST /api/v1/drafts.json
   def create
-    @api_v1_draft = Api::V1::Draft.new(api_v1_draft_params)
+    @api_v1_draft = Draft.new(api_v1_draft_params)
 
     respond_to do |format|
       if @api_v1_draft.save
@@ -62,13 +62,14 @@ class Api::V1::DraftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_draft
-      @api_v1_draft = Api::V1::Draft.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def api_v1_draft_params
-      params.require(:api_v1_draft).permit(:name, :datetime)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_v1_draft
+    @api_v1_draft = Draft.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def api_v1_draft_params
+    params.require(:api_v1_draft).permit(:name, :datetime)
+  end
 end

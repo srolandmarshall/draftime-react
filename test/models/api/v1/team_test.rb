@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class DraftTest < ActiveSupport::TestCase
+class TeamTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
