@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :fantasy_drafts
+  resources :fantasy_leagues
+  resources :drafters
+  resources :fantasy_teams
   resources :leagues
   resources :drafts
   resources :players

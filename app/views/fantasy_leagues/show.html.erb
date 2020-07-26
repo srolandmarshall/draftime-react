@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fantasy_league.name %>
+</p>
+
+<p>
+  <strong>Max teams:</strong>
+  <%= @fantasy_league.max_teams %>
+</p>
+
+<p>
+  <strong>League:</strong>
+  <%= @fantasy_league.league_id %>
+</p>
+
+<%= link_to 'Edit', edit_fantasy_league_path(@fantasy_league) %> |
+<%= link_to 'Back', fantasy_leagues_path %>

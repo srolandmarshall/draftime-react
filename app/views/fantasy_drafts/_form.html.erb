@@ -1,0 +1,37 @@
+<%= form_with(model: fantasy_draft, local: true) do |form| %>
+  <% if fantasy_draft.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fantasy_draft.errors.count, "error") %> prohibited this fantasy_draft from being saved:</h2>
+
+      <ul>
+        <% fantasy_draft.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fantasy_league_id %>
+    <%= form.text_field :fantasy_league_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datetime %>
+    <%= form.datetime_select :datetime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picks %>
+    <%= form.text_field :picks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

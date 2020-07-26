@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @drafter.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @drafter.owner %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @drafter.email %>
+</p>
+
+<%= link_to 'Edit', edit_drafter_path(@drafter) %> |
+<%= link_to 'Back', drafters_path %>

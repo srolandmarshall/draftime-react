@@ -1,0 +1,32 @@
+<%= form_with(model: fantasy_team, local: true) do |form| %>
+  <% if fantasy_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fantasy_team.errors.count, "error") %> prohibited this fantasy_team from being saved:</h2>
+
+      <ul>
+        <% fantasy_team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abbrev %>
+    <%= form.text_field :abbrev %>
+  </div>
+
+  <div class="field">
+    <%= form.label :league_id %>
+    <%= form.text_field :league_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
