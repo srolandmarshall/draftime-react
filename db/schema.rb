@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_060429) do
+ActiveRecord::Schema.define(version: 2020_07_26_181239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drafters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fantasy_drafts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "fantasy_league_id", null: false
+    t.datetime "datetime"
+    t.json "picks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fantasy_league_id"], name: "index_fantasy_drafts_on_fantasy_league_id"
+  end
+
+  create_table "fantasy_leagues", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_teams"
+    t.bigint "league_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_fantasy_leagues_on_league_id"
+  end
+
+  create_table "fantasy_teams", force: :cascade do |t|
+    t.string "name"
+    t.string "abbrev"
+    t.bigint "league_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_fantasy_teams_on_league_id"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -40,4 +74,19 @@ ActiveRecord::Schema.define(version: 2020_07_23_060429) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "fantasy_drafts", "fantasy_leagues"
+  add_foreign_key "fantasy_leagues", "leagues"
+  add_foreign_key "fantasy_teams", "leagues"
 end

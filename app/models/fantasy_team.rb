@@ -2,5 +2,5 @@
 
 class FantasyTeam < ApplicationRecord
   belongs_to :league
-  has_many :fantasy_player
+  belongs_to :drafter
 end
