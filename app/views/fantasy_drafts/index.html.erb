@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Fantasy league</th>
+      <th>Name</th>
       <th>Datetime</th>
-      <th>Picks</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @fantasy_drafts.each do |fantasy_draft| %>
       <tr>
-        <td><%= fantasy_draft.name %></td>
         <td><%= fantasy_draft.fantasy_league_id %></td>
+        <td><%= fantasy_draft.name %></td>
         <td><%= fantasy_draft.datetime %></td>
-        <td><%= fantasy_draft.picks %></td>
         <td><%= link_to 'Show', fantasy_draft %></td>
         <td><%= link_to 'Edit', edit_fantasy_draft_path(fantasy_draft) %></td>
         <td><%= link_to 'Destroy', fantasy_draft, method: :delete, data: { confirm: 'Are you sure?' } %></td>

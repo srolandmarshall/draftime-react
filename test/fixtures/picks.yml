@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player: one
+  draft: one
+  round: 1
+  pick_number: 1
+
+two:
+  player: two
+  draft: two
+  round: 1
+  pick_number: 1

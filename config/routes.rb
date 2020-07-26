@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
   resources :fantasy_drafts
+  resources :picks
+  devise_for :users
   resources :fantasy_leagues
   resources :drafters
   resources :fantasy_teams

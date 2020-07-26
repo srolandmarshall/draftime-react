@@ -17,7 +17,7 @@ class FantasyDraftsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create fantasy_draft" do
     assert_difference('FantasyDraft.count') do
-      post fantasy_drafts_url, params: { fantasy_draft: { datetime: @fantasy_draft.datetime, fantasy_league_id: @fantasy_draft.fantasy_league_id, name: @fantasy_draft.name, picks: @fantasy_draft.picks } }
+      post fantasy_drafts_url, params: { fantasy_draft: { datetime: @fantasy_draft.datetime, fantasy_league_id: @fantasy_draft.fantasy_league_id, name: @fantasy_draft.name } }
     end
 
     assert_redirected_to fantasy_draft_url(FantasyDraft.last)
@@ -34,7 +34,7 @@ class FantasyDraftsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update fantasy_draft" do
-    patch fantasy_draft_url(@fantasy_draft), params: { fantasy_draft: { datetime: @fantasy_draft.datetime, fantasy_league_id: @fantasy_draft.fantasy_league_id, name: @fantasy_draft.name, picks: @fantasy_draft.picks } }
+    patch fantasy_draft_url(@fantasy_draft), params: { fantasy_draft: { datetime: @fantasy_draft.datetime, fantasy_league_id: @fantasy_draft.fantasy_league_id, name: @fantasy_draft.name } }
     assert_redirected_to fantasy_draft_url(@fantasy_draft)
   end
 

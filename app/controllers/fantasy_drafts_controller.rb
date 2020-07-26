@@ -69,6 +69,6 @@ class FantasyDraftsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fantasy_draft_params
-      params.require(:fantasy_draft).permit(:name, :fantasy_league_id, :datetime, :picks)
+      params.require(:fantasy_draft).permit(:fantasy_league_id, :name, :datetime)
     end
 end

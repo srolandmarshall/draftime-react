@@ -1,13 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
   fantasy_league: one
-  datetime: 2020-07-26 13:48:15
-  picks: 
+  name: MyString
+  datetime: 2020-07-26 14:27:13
 
 two:
-  name: MyString
   fantasy_league: two
-  datetime: 2020-07-26 13:48:15
-  picks: 
+  name: MyString
+  datetime: 2020-07-26 14:27:13

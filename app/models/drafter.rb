@@ -2,4 +2,5 @@
 
 class Drafter < ApplicationRecord
   belongs_to :fantasy_team
+  has_many :users
 end

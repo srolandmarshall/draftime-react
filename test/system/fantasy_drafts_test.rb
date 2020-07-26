@@ -17,7 +17,6 @@ class FantasyDraftsTest < ApplicationSystemTestCase
     fill_in "Datetime", with: @fantasy_draft.datetime
     fill_in "Fantasy league", with: @fantasy_draft.fantasy_league_id
     fill_in "Name", with: @fantasy_draft.name
-    fill_in "Picks", with: @fantasy_draft.picks
     click_on "Create Fantasy draft"
 
     assert_text "Fantasy draft was successfully created"
@@ -31,7 +30,6 @@ class FantasyDraftsTest < ApplicationSystemTestCase
     fill_in "Datetime", with: @fantasy_draft.datetime
     fill_in "Fantasy league", with: @fantasy_draft.fantasy_league_id
     fill_in "Name", with: @fantasy_draft.name
-    fill_in "Picks", with: @fantasy_draft.picks
     click_on "Update Fantasy draft"
 
     assert_text "Fantasy draft was successfully updated"
