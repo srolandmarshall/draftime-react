@@ -9,6 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'fantasy_football_nerd'
+require 'faker'
 
 def define_api_key
   FFNerd.api_key = 'mkpsqkxz365y'
@@ -18,7 +19,7 @@ def create_nfl_teams
   @nfl_teams = FFNerd.teams
   @nfl_teams.each do |team|
     puts team
-    Team.create!(league_id: League.find_by(name: 'NFL').id, code: team.code, full_name: team.full_name, short_name: team.short_name)
+    Team.create!(league_id: nfl_id, code: team.code, full_name: team.full_name, short_name: team.short_name)
   end
 end
 
@@ -37,7 +38,7 @@ def create_nfl_players
     Player.create!(name: player.display_name, position: player.position,
                    team_id: get_team_id_by_code(player.team),
                    fname: player.fname, lname: player.lname,
-                   jersey: player.jersey, league_id: League.find_by(name: 'NFL').id)
+                   jersey: player.jersey, league_id: nfl_id)
   end
 end
 
@@ -46,6 +47,17 @@ def create_nfl
   League.create(name: 'NFL')
   create_nfl_teams
   create_nfl_players
+end
+
+def nfl_id
+  League.find_by(name: 'NFL').id
+end
+
+def create_fantasy_leagues; end
+
+def create_fantasy_team
+  name = Faker::Team.name.titlecase
+  Team.create(name: name, abbrev: name[0..2], league_id: nfl_id)
 end
 
 create_nfl
