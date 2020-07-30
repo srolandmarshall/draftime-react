@@ -1,20 +1,15 @@
-<%= form_with(model: api_v1_league, local: true) do |form| %>
-  <% if api_v1_league.errors.any? %>
+<%= form_with(model: league, local: true) do |form| %>
+  <% if league.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(api_v1_league.errors.count, "error") %> prohibited this api_v1_league from being saved:</h2>
+      <h2><%= pluralize(league.errors.count, "error") %> prohibited this league from being saved:</h2>
 
       <ul>
-        <% api_v1_league.errors.full_messages.each do |message| %>
+        <% league.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

@@ -1,19 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @api_v1_team.code %>
-</p>
-
-<p>
-  <strong>Full name:</strong>
-  <%= @api_v1_team.full_name %>
-</p>
-
-<p>
-  <strong>Short name:</strong>
-  <%= @api_v1_team.short_name %>
-</p>
-
-<%= link_to 'Edit', edit_api_v1_team_path(@api_v1_team) %> |
-<%= link_to 'Back', api_v1_teams_path %>
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

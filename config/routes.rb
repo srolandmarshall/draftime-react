@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :drafters
   resources :fantasy_teams
   resources :leagues
-  resources :drafts
   resources :players
   resources :teams
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

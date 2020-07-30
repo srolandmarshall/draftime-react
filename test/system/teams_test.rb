@@ -14,9 +14,6 @@ class TeamsTest < ApplicationSystemTestCase
     visit teams_url
     click_on "New Team"
 
-    fill_in "Code", with: @team.code
-    fill_in "Full name", with: @team.full_name
-    fill_in "Short name", with: @team.short_name
     click_on "Create Team"
 
     assert_text "Team was successfully created"
@@ -27,9 +24,6 @@ class TeamsTest < ApplicationSystemTestCase
     visit teams_url
     click_on "Edit", match: :first
 
-    fill_in "Code", with: @team.code
-    fill_in "Full name", with: @team.full_name
-    fill_in "Short name", with: @team.short_name
     click_on "Update Team"
 
     assert_text "Team was successfully updated"

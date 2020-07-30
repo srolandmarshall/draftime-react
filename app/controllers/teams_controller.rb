@@ -1,75 +1,74 @@
-# frozen_string_literal: true
-
 class TeamsController < ApplicationController
-  before_action :set_api_v1_team, only: %i[show edit update destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-  # GET /api/v1/teams
-  # GET /api/v1/teams.json
+  # GET /teams
+  # GET /teams.json
   def index
-    @api_v1_teams = Team.all
+    @teams = Team.all
   end
 
-  # GET /api/v1/teams/1
-  # GET /api/v1/teams/1.json
-  def show; end
+  # GET /teams/1
+  # GET /teams/1.json
+  def show
+  end
 
-  # GET /api/v1/teams/new
+  # GET /teams/new
   def new
-    @api_v1_team = Team.new
+    @team = Team.new
   end
 
-  # GET /api/v1/teams/1/edit
-  def edit; end
+  # GET /teams/1/edit
+  def edit
+  end
 
-  # POST /api/v1/teams
-  # POST /api/v1/teams.json
+  # POST /teams
+  # POST /teams.json
   def create
-    @api_v1_team = Team.new(api_v1_team_params)
+    @team = Team.new(team_params)
 
     respond_to do |format|
-      if @api_v1_team.save
-        format.html { redirect_to @api_v1_team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @api_v1_team }
+      if @team.save
+        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
-        format.json { render json: @api_v1_team.errors, status: :unprocessable_entity }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /api/v1/teams/1
-  # PATCH/PUT /api/v1/teams/1.json
+  # PATCH/PUT /teams/1
+  # PATCH/PUT /teams/1.json
   def update
     respond_to do |format|
-      if @api_v1_team.update(api_v1_team_params)
-        format.html { redirect_to @api_v1_team, notice: 'Team was successfully updated.' }
-        format.json { render :show, status: :ok, location: @api_v1_team }
+      if @team.update(team_params)
+        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
-        format.json { render json: @api_v1_team.errors, status: :unprocessable_entity }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /api/v1/teams/1
-  # DELETE /api/v1/teams/1.json
+  # DELETE /teams/1
+  # DELETE /teams/1.json
   def destroy
-    @api_v1_team.destroy
+    @team.destroy
     respond_to do |format|
-      format.html { redirect_to api_v1_teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_team
+      @team = Team.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_api_v1_team
-    @api_v1_team = Team.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def api_v1_team_params
-    params.require(:api_v1_team).permit(:code, :full_name, :short_name)
-  end
+    # Only allow a list of trusted parameters through.
+    def team_params
+      params.fetch(:team, {})
+    end
 end

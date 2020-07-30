@@ -14,9 +14,6 @@ class PlayersTest < ApplicationSystemTestCase
     visit players_url
     click_on "New Player"
 
-    fill_in "League", with: @player.league
-    fill_in "Name", with: @player.name
-    fill_in "Position", with: @player.position
     click_on "Create Player"
 
     assert_text "Player was successfully created"
@@ -27,9 +24,6 @@ class PlayersTest < ApplicationSystemTestCase
     visit players_url
     click_on "Edit", match: :first
 
-    fill_in "League", with: @player.league
-    fill_in "Name", with: @player.name
-    fill_in "Position", with: @player.position
     click_on "Update Player"
 
     assert_text "Player was successfully updated"
