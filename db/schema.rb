@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_223110) do
+ActiveRecord::Schema.define(version: 2020_07_30_225110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "drafters", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "fantasy_drafts", force: :cascade do |t|
     t.bigint "fantasy_league_id", null: false
@@ -53,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_223110) do
   end
 
   create_table "picks", force: :cascade do |t|
-    t.bigint "player_id", null: false
+    t.bigint "player_id"
     t.bigint "fantasy_draft_id", null: false
     t.bigint "fantasy_team_id", null: false
     t.integer "round"

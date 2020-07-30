@@ -53,11 +53,14 @@ def nfl_id
   League.find_by(name: 'NFL').id
 end
 
-def create_fantasy_leagues; end
-
-def create_fantasy_team
-  name = Faker::Team.name.titlecase
-  Team.create(name: name, abbrev: name[0..2], league_id: nfl_id)
+def create_fantasy_league
+  league = FantasyLeague.create(name: Faker::Company.name, max_teams: [8, 10, 12].sample, league_id: nfl_id)
+  league.max_teams.times { create_fantasy_team(league.id) }
 end
 
-create_nfl
+def create_fantasy_team(fantasy_league_id)
+  name = Faker::Team.name.titlecase
+  FantasyTeam.create(name: name, abbrev: name[0..2].upcase, fantasy_league_id: fantasy_league_id)
+end
+
+10.times { create_fantasy_league }

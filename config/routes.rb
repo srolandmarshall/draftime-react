@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :picks
   devise_for :users
   resources :fantasy_leagues
-  resources :drafters
   resources :fantasy_teams
   resources :leagues
   resources :players
