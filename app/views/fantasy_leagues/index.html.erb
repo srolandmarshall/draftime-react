@@ -15,7 +15,7 @@
   <tbody>
     <% @fantasy_leagues.each do |fantasy_league| %>
       <tr>
-        <td><%= fantasy_league.name %></td>
+        <td><%= link_to fantasy_league.name, fantasy_league %></td>
         <td><%= fantasy_league.max_teams %></td>
         <td><%= fantasy_league.league_id %></td>
         <td><%= link_to 'Show', fantasy_league %></td>
