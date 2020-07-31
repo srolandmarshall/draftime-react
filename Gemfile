@@ -59,8 +59,8 @@ gem 'react-rails', '~> 2.6'
 
 gem 'fantasy_football_nerd', '~> 1.3'
 
-gem "devise", "~> 4.7"
+gem 'devise', '~> 4.7'
 
-gem "pry-rescue", "~> 1.5"
+gem 'pry-rescue', '~> 1.5'
 
-gem "faker", "~> 2.13"
+gem 'faker', '~> 2.13'
