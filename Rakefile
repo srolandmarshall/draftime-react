@@ -6,4 +6,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-spec.license = 'GPL-3.0-or-later'
