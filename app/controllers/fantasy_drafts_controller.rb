@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class FantasyDraftsController < ApplicationController
-  before_action :set_fantasy_draft, only: [:show, :edit, :update, :destroy]
+  before_action :set_fantasy_draft, only: %i[show edit update destroy]
 
   # GET /fantasy_drafts
   # GET /fantasy_drafts.json
@@ -9,8 +11,7 @@ class FantasyDraftsController < ApplicationController
 
   # GET /fantasy_drafts/1
   # GET /fantasy_drafts/1.json
-  def show
-  end
+  def show; end
 
   # GET /fantasy_drafts/new
   def new
@@ -18,14 +19,12 @@ class FantasyDraftsController < ApplicationController
   end
 
   # GET /fantasy_drafts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /fantasy_drafts
   # POST /fantasy_drafts.json
   def create
     @fantasy_draft = FantasyDraft.new(fantasy_draft_params)
-
     respond_to do |format|
       if @fantasy_draft.save
         format.html { redirect_to @fantasy_draft, notice: 'Fantasy draft was successfully created.' }
@@ -62,13 +61,14 @@ class FantasyDraftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fantasy_draft
-      @fantasy_draft = FantasyDraft.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def fantasy_draft_params
-      params.require(:fantasy_draft).permit(:fantasy_league_id, :name, :datetime)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fantasy_draft
+    @fantasy_draft = FantasyDraft.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def fantasy_draft_params
+    params.require(:fantasy_draft).permit(:fantasy_league_id, :name, :datetime)
+  end
 end
