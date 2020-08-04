@@ -2,3 +2,26 @@
 
 <%= link_to 'Edit', edit_fantasy_draft_path(@fantasy_draft) %> |
 <%= link_to 'Back', fantasy_drafts_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Round</th>
+      <th>Pick number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @fantasy_draft.picks.each do |pick| %>
+      <tr>
+        <td><%= link_to pick.player.name, pick.player %></td>
+        <td><%= pick.round %></td>
+        <td><%= pick.pick_number %></td>
+        <td><%= link_to 'Show', pick %></td>
+        <td><%= link_to 'Edit', edit_pick_path(pick) %></td>
+        <td><%= link_to 'Destroy', pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

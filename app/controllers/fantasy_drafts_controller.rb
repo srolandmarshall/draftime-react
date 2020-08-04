@@ -25,6 +25,8 @@ class FantasyDraftsController < ApplicationController
   # POST /fantasy_drafts.json
   def create
     @fantasy_draft = FantasyDraft.new(fantasy_draft_params)
+    @fantasy_draft.save
+    @fantasy_draft.create_picks
 
     respond_to do |format|
       if @fantasy_draft.save

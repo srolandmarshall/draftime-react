@@ -8,59 +8,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require_relative './seeds/nfl_seeds'
 require 'fantasy_football_nerd'
 require 'faker'
-
-def define_api_key
-  FFNerd.api_key = 'mkpsqkxz365y'
-end
-
-def create_nfl_teams
-  @nfl_teams = FFNerd.teams
-  @nfl_teams.each do |team|
-    puts team
-    Team.create!(league_id: nfl_id, code: team.code, full_name: team.full_name, short_name: team.short_name)
-  end
-end
-
-def get_team_id_by_code(team_code)
-  Team.find_by(code: team_code).id
-end
-
-def create_nfl_players
-  @nfl_players = FFNerd.players
-  @nfl_players.each do |player|
-    if player.active == '0'
-      puts 'Skipping inactive player...'
-      next
-    end
-    puts "Creating player #{player.display_name}"
-    Player.create!(name: player.display_name, position: player.position,
-                   team_id: get_team_id_by_code(player.team),
-                   fname: player.fname, lname: player.lname,
-                   jersey: player.jersey, league_id: nfl_id)
-  end
-end
-
-def create_nfl
-  define_api_key
-  League.create(name: 'NFL')
-  create_nfl_teams
-  create_nfl_players
-end
-
-def nfl_id
-  League.find_by(name: 'NFL').id
-end
-
-def create_fantasy_league
-  league = FantasyLeague.create(name: Faker::Company.name, max_teams: [8, 10, 12].sample, league_id: nfl_id)
-  league.max_teams.times { create_fantasy_team(league.id) }
-end
 
 def create_fantasy_team(fantasy_league_id)
   name = Faker::Team.name.titlecase
   FantasyTeam.create(name: name, abbrev: name[0..2].upcase, fantasy_league_id: fantasy_league_id)
 end
 
-10.times { create_fantasy_league }
+def create_fantasy_league
+  league = FantasyLeague.create(name: Faker::Company.name, max_teams: [8, 10, 12].sample,
+                                league_id: nfl_id, wr: 2, rb: 2, te: 1, qb: 1, defense: 1, k: 1, flex: 1, bench: 8)
+  league.max_teams.times { create_fantasy_team(league.id) }
+end
+
+def make_draft_name
+  Faker::Hipster.words(number: [2, 3].sample).flatten.join(' ').titlecase
+end
+
+def create_fantasy_drafts
+  FantasyLeague.all.each do |league|
+    puts "Making Drafts for #{league.name}"
+    FantasyDraft.create(fantasy_league_id: league.id, name: make_draft_name, datetime: Faker::Time.forward(days: 10),
+                        config: nil, is_snake: true, draft_order: league.team_ids.shuffle)
+  end
+end
+
+def seed_drafts
+  FantasyDraft.all.each(&:seed_picks)
+end
+
+seed_drafts
+create_fantasy_drafts
