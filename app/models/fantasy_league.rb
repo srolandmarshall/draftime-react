@@ -9,4 +9,9 @@ class FantasyLeague < ApplicationRecord
   def teams
     fantasy_teams
   end
+
+  def roster_spots
+    props = %i[wr rb qb flex defense off_player k bench te rb_or_wr]
+    props.map { |p| total += self[p] }
+  end
 end
