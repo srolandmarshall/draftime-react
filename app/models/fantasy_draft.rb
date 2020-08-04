@@ -9,4 +9,8 @@ class FantasyDraft < ApplicationRecord
   def roster_spots
     fantasy_league.roster_spots
   end
+
+  def teams
+    fantasy_league.teams
+  end
 end

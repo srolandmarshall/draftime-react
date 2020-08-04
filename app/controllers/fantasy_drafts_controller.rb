@@ -25,6 +25,7 @@ class FantasyDraftsController < ApplicationController
   # POST /fantasy_drafts.json
   def create
     @fantasy_draft = FantasyDraft.new(fantasy_draft_params)
+
     respond_to do |format|
       if @fantasy_draft.save
         format.html { redirect_to @fantasy_draft, notice: 'Fantasy draft was successfully created.' }
